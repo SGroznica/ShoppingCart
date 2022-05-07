@@ -1,62 +1,116 @@
 package Model;
 
-import java.math.BigDecimal;
+import java.util.Objects;
 
 public class Product {
 
-    private Integer id;
+
     private Integer sku;
     private String name;
+    private Double price;
     private Integer quantity;
-    private BigDecimal price;
-    private Inventory inventory;
 
-
-    public Integer getId() {
-        return id;
+    public Product () {
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getSku() {
-        return sku;
-    }
-
-    public void setSku(Integer sku) {
+    public Product (Integer sku, String name, Double price, Integer quantity) {
         this.sku = sku;
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
     }
-
+    /**
+     * @return the name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * @param name the name to set
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * @return the price
+     */
+    public Double getPrice() {
+        return price;
+    }
+
+    /**
+     * @param price the price to set
+     */
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    /**
+     * @return the stock
+     */
     public Integer getQuantity() {
         return quantity;
     }
 
+    /**
+     * @param quantity the stock to set
+     */
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 
-    public BigDecimal getPrice() {
-        return price;
+    /**
+     * @return the pid
+     */
+    public Integer getSku() {
+        return sku;
     }
 
-    public void setPrice(BigDecimal price) {
-        this.price = price;
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 29 * hash + Objects.hashCode(this.sku);
+        hash = 29 * hash + Objects.hashCode(this.name);
+        hash = 29 * hash + Objects.hashCode(this.price);
+        hash = 29 * hash + Objects.hashCode(this.quantity);
+        return hash;
     }
 
-    public Inventory getInventory() {
-        return inventory;
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Product other = (Product) obj;
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.sku, other.sku)) {
+            return false;
+        }
+        if (!Objects.equals(this.price, other.price)) {
+            return false;
+        }
+        if (!Objects.equals(this.quantity, other.quantity)) {
+            return false;
+        }
+        return true;
     }
 
-    public void setInventory(Inventory inventory) {
-        this.inventory = inventory;
+    /**
+     * @param pid the pid to set
+     */
+    public void setSku(Integer sku) {
+        this.sku = sku;
     }
+
+
 }
